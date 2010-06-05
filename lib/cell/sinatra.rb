@@ -2,7 +2,6 @@ module Cell
   class Sinatra < AbstractBase  ### TODO: derive from Cell::Base.
     # Sinatra::Templates introduces two dependencies:
       #  - it accesses @template_cache
-      #  - it uses self.class.templates to reads named templates  ### TODO: implement/test
       #  - invokes methods #settings
       include ::Sinatra::Templates
       alias_method :render_template, :render
@@ -70,7 +69,6 @@ module Cell
         self.send(options[:engine], "#{file}".to_sym, options)
       end
       
-      ### FIXME: template_format needed?
       # Returns the first existing view for +state+ in the inheritance chain.
       def find_family_view_for(state, options, views)
         possible_paths_for_state(state).find do |template_path|

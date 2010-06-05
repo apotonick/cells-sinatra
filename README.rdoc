@@ -1,0 +1,29 @@
+= Sinatra Cells
+
+_View Components for Sinatra_
+
+== Introduction
+
+Cells are object-oriented view components for your MVC-apps. They provide a decent way for encapsulating logic
+and rendering and thus help in creating reusable widgets.
+
+For a detailed discussion on cells see http://github.com/apotonick/cells
+
+== Usage
+
+Rendering cells in your Sinatra app is easy.
+
+	MyApp < Sinatra::Base
+  	helpers Cells::Sinatra
+    
+    get "/" do
+      @top_posts = render_cell(:post, :top10)
+      
+      # ... do more
+    end
+
+== License
+
+Copyright (c) 2010, Nick Sutterer 
+
+Released under the MIT License.

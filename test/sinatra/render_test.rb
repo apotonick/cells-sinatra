@@ -11,12 +11,6 @@ class MyApp < Sinatra::Base
 end
 
 class SinatraRenderTest < ActiveSupport::TestCase
-  
-  def render_cell(name, state, opts={})  ### FIXME.
-      cell = ::Cell::AbstractBase.create_cell_for(@controller, name, opts)
-      return cell.render_state(state)
-  end
-  
   context "Invoking render" do
     setup do
       SingerCell.class_eval do
@@ -159,7 +153,7 @@ class SinatraRenderTest < ActiveSupport::TestCase
     end
     
     # sinatra view api
-    should "allow calls to params/response/..." do
+    should_eventually "allow calls to params/response/..." do
       SingerCell.class_eval do
         def pose; render; end
       end

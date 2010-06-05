@@ -3,20 +3,22 @@ require File.join(File.dirname(__FILE__), '/../test_helper')
 
 class SinatraCellsTest < ActiveSupport::TestCase
   context "A sinatra cell" do
-    setup do
-      TestConfiguration.sinatra!
-    end
-    
-    teardown do
-      TestConfiguration.sinatra!
-      BackgroundSingerCell.views = Cell::Sinatra.views
-    end
-    
-    should "respond to views" do
-      BackgroundSingerCell.views = "another/dir"
-      Cell::Sinatra.views = "test/dir"
-      assert_equal "test/dir", Cell::Sinatra.views
-      assert_equal "another/dir", BackgroundSingerCell.views
+    context "with views" do
+      setup do
+        @original_views = Cell::Sinatra.views
+      end
+      
+      teardown do
+        Cell::Sinatra.views = @original_views
+      end
+      
+      should "respond to views" do
+        class FanCell < Cell::Sinatra; end
+        FanCell.views       = "another/dir"
+        Cell::Sinatra.views = "test/dir"
+        assert_equal "test/dir", Cell::Sinatra.views
+        assert_equal "another/dir", FanCell.views
+      end
     end
     
     context "invoking defaultize_render_options_for" do
@@ -35,7 +37,7 @@ class SinatraCellsTest < ActiveSupport::TestCase
     
     context "invoking find_family_view_for" do
       setup do
-        @views = File.join(File.dirname(__FILE__), '/../app/cells')
+        @views = File.join(File.dirname(__FILE__), '/../cells')
       end
       
       should "return sing.html.erb" do

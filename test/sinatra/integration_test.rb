@@ -3,6 +3,8 @@ require 'rack/test'
 require 'cells/sinatra'
 
 class CellsApp < Sinatra::Base
+  set :environment, :test
+  
   helpers Cells::Sinatra
   
   get "/" do

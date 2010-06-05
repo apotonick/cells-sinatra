@@ -10,8 +10,15 @@ module Cells
   module Sinatra
     VERSION = 1.0
     
+    # Renders a cell state.
+    #
+    # Example:
+    #
+    #   render_cell(:post, :top10)
+    #
+    # would render the state +top10+ of the +PostCell+.
     def render_cell(name, state, opts={})
-      ::Cell::Base.render_cell_for(self, name, state, opts)
+      ::Cell::AbstractBase.render_cell_for(self, name, state, opts)
     end
   end
 end

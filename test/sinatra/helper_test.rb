@@ -11,7 +11,7 @@ end
 class SinatraHelperTest < ActiveSupport::TestCase
   context "A cell with helper" do
     should "respond to helper methods on instance level" do
-      assert_not cell(:singer).respond_to?(:pitch)
+      assert ! cell(:singer).respond_to?(:pitch)
       
       SingerCell.class_eval { helpers OctaveHelper }
       assert cell(:singer).respond_to?(:pitch)
