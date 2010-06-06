@@ -65,7 +65,7 @@ begin
     spec.files = FileList["[A-Z]*", File.join(*%w[{lib} ** *]).to_s]
 
     spec.add_dependency 'activesupport', '>= 2.3.0'
-    spec.add_dependency 'cells', '>= 3.4.0'
+    spec.add_dependency 'cells', '>= 4.0.0'
   end
 
   Jeweler::GemcutterTasks.new

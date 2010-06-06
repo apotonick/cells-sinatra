@@ -13,7 +13,7 @@ require File.join(File.dirname(__FILE__), %w(cells background_singer_cell))
 
 class ActiveSupport::TestCase
   def cell(name, opts={})
-    ::Cell::AbstractBase.create_cell_for(@controller, name, opts)
+    ::Cell::Sinatra.create_cell_for(@controller, name, opts)
   end
   
   def render_cell(name, state, opts={})  ### FIXME.

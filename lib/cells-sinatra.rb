@@ -2,10 +2,9 @@ require 'rubygems'
 
 require 'active_support'
 
-gem 'cells', '= 3.4.0'
-require 'cells'
-require 'cell/abstract_base'  ### FIXME: let cells handle that!
+gem 'cells', '= 4.0.0'
 
+require 'cell/base_methods'
 require 'sinatra/base'
 require 'cells/sinatra'
 require 'cell/sinatra'

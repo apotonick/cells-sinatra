@@ -1,8 +1,9 @@
 module Cell
-  class Sinatra < AbstractBase  ### TODO: derive from Cell::Base.
+  class Sinatra
     # Sinatra::Templates introduces two dependencies:
-      #  - it accesses @template_cache
-      #  - invokes methods #settings
+    #  - it accesses @template_cache
+    #  - invokes methods #settings
+      include ::Cell::BaseMethods # from the cells gem.
       include ::Sinatra::Templates
       alias_method :render_template, :render
       delegate :settings, :to => :controller

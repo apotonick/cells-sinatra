@@ -18,7 +18,7 @@ module Cells
     #
     # would render the state +top10+ of the +PostCell+.
     def render_cell(name, state, opts={})
-      ::Cell::AbstractBase.render_cell_for(self, name, state, opts)
+      ::Cell::Sinatra.render_cell_for(self, name, state, opts)
     end
   end
 end
